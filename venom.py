@@ -18,7 +18,7 @@ async def register(client):
             venom_enabled = not venom_enabled
             current_chat_id = event.chat_id  # Set the current chat ID
             status = "включен" if venom_enabled else "выключен"
-            await event.reply(f"веном {status}😈😈.")
+            await event.edit(f"веном {status}😈😈.")
             return
         
         # If the feature is enabled and the message is from the same chat, append 'venom' to the message
