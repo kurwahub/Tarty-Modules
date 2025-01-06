@@ -1,6 +1,7 @@
 from telethon import events
 
 commands = "напиши '.venom' чтобы врубить веном мод ❤❤"
+description = "веном"
 
 # Variable to track whether the feature is enabled
 venom_enabled = False
