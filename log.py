@@ -1,5 +1,5 @@
 import os
-from telethon import events
+from telethon import *
 
 commands = "Enter '.logchat' to log messages! arguments: --no-caps, --log-bots, --dont-log-bots"
 
