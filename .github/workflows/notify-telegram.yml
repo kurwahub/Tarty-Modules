@@ -9,10 +9,14 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
+
       - name: Check for Python file updates
         id: check_updates
         run: |
-          git fetch --prune
           git diff --name-only HEAD^ HEAD | grep '\.py$' > updated_files.txt || echo "No updates"
           echo "::set-output name=updated::$(cat updated_files.txt)"
 
