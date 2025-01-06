@@ -1,0 +1,26 @@
+name: Notify Telegram on Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Python file updates
+        id: check_updates
+        run: |
+          git fetch --prune
+          git diff --name-only HEAD^ HEAD | grep '\.py$' > updated_files.txt || echo "No updates"
+          echo "::set-output name=updated::$(cat updated_files.txt)"
+
+      - name: Send Telegram Notification
+        if: steps.check_updates.outputs.updated != ''
+        run: |
+          TOKEN="7555856648:AAFF_zq7THb2Dx1bxmdbsDMxkvWrlwAI74M"
+          CHAT_ID="-1002297752617"
+          MODULE_NAME=$(echo "${{ steps.check_updates.outputs.updated }}" | head -n 1 | sed 's/.*\///; s/\.py$//')
+          MESSAGE="🚀 $MODULE_NAME has been updated by Owner!🚀"
+          curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=$MESSAGE&parse_mode=HTML"
