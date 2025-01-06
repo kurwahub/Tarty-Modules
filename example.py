@@ -6,4 +6,4 @@ async def register(client):
     @client.on(events.NewMessage)
     async def handler(event):
         if event.raw_text == '.hi':
-            await event.reply("Hello!")
+            await event.reply("Hello!!!")
