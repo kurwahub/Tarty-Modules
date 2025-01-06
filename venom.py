@@ -23,4 +23,4 @@ async def register(client):
         
         # If the feature is enabled and the message is from the same chat, append 'venom' to the message
         if venom_enabled and event.chat_id == current_chat_id:
-            await event.reply(event.raw_text + " venom")
+            await event.edit(event.raw_text + " venom")
