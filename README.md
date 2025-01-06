@@ -1,2 +1,2 @@
 # Modules 
-Modules for Tarty userbot (release soon)
+t.me/TartyUserbot GLOBAL RELEASE!
